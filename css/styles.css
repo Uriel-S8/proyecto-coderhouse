@@ -1,5 +1,6 @@
 /**---reset---*/
 *{
+    border: #000 solid 0px;
     margin: 0;
     padding: 0;
     font-family: "Concert One", sans-serif;
@@ -8,7 +9,7 @@
 
 /**---header---*/
 header{
-    height: 200px;
+    height: 100%;
     display: flex;
     align-items: center;
     background-color: #e5ba73;
@@ -51,19 +52,40 @@ a{
     height: 100%;
     display: block;
 }
-.orden-visitanos{
+/*visitanos*/
+.orden-visitanos {
     display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
-}
-.titulo-main{
-    display: flex;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: start;
 }
 
+.titulo-main {
+    grid-column: 1 / 3; /* el h2 ocupa las dos columnas */
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.mapa-main {
+    width: 100%;
+    height: 100%;
+}
+
+.texto-main {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+article{
+    height: 100%;
+}
 /**---footer---*/
 footer{
     background-color: #e5ba73;
-    height: 200px;
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -73,6 +95,7 @@ footer{
     border: solid 2px rgb(0, 0, 0);
     padding-left: 5px;
     background-color: rgb(250, 234, 177);
+    margin: 0px 5px;
 }
 
 li{
@@ -90,14 +113,31 @@ h2{
 /**---bootstrap---*/
 .navbar-custom{
     background-color: #e5ba73;
+    height: 100%;
+    width: 100%;
 }
-
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-brand {
+    order: -1;
+}
 .navbar-custom .navbar-brand,
 .navbar-custom .nav-link,
 .navbar-custom .navbar-toggler {
-  color: #000 !important; /* Letras negras */
+color: #000
 }
-
+.navbar-nav .nav-link {
+    transition: background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+.navbar-nav .nav-link:hover {
+    background-color: rgba(0,0,0,0.20);
+}
+/**---responsive ---*/
 @media screen and (max-width:850px){
     *{
         font-size: 15px;
@@ -111,15 +151,37 @@ h2{
         flex-wrap: wrap;
         gap: 1rem;
         justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
-    .imagenes-prod{
+    .imagenes-prod > *{
         flex: 1 1 300px;
         max-width: 400px;
     }
-}
+        .orden-visitanos {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .titulo-main {
+        grid-column: auto;
+    }
 
 @media screen and (max-width:500px){
-    *{
-        font-size: 10px;
+*{
+    font-size: 10px;
     }
+/**---footer---*/
+footer{
+    flex-direction: column;
+    align-items: center;
+    }
+.lista-footer{
+    margin-top: 0px;
+}
+.redes{
+    text-align: center;
+    width: 100%;
+}
+}
 }
